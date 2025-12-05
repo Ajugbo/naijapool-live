@@ -3,39 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NaijaPool - Safe Rides in Nigeria</title>
+    <title>NaijaPool - Safe & Affordable Rides Across Nigeria</title>
+    <meta name="description" content="Verified drivers, fixed fares, maximum comfort. Join Nigeria's safest ride-sharing community.">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🚗 NaijaPool Commute</h1>
-            <p class="tagline">Safe, affordable rides. Verified drivers. Fixed fares.</p>
-        </header>
-        
-        <main>
-            <div class="card">
-                <h2>How It Works</h2>
-                <ul>
-                    <li>✅ Register in 2 minutes</li>
-                    <li>✅ Find rides on your route</li>
-                    <li>✅ Max 4 passengers per car</li>
-                    <li>✅ Fixed fare: ₦800 Nyanya-CBD</li>
-                    <li>✅ Platform fee: ₦100 per ride</li>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-car"></i>
+                <span>Naija<span class="logo-highlight">Pool</span></span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#safety">Safety</a>
+                <a href="#download" class="btn-nav">Get App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Travel <span class="highlight">Safe</span>, Save <span class="highlight">Money</span></h1>
+                <p class="hero-subtitle">Nigeria's trusted ride-sharing platform. Verified drivers, fixed fares, no overcrowding. Join thousands of happy commuters.</p>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showPassengerModal()">
+                        <i class="fas fa-user-plus"></i> Find a Ride
+                    </button>
+                    <button class="btn btn-secondary" onclick="showDriverModal()">
+                        <i class="fas fa-steering-wheel"></i> Become a Driver
+                    </button>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>10,000+</h3>
+                        <p>Happy Users</p>
+                    </div>
+                    <div class="stat">
+                        <h3>₦3M+</h3>
+                        <p>Saved by Users</p>
+                    </div>
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Routes Covered</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="NaijaPool App Interface">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose <span class="highlight">NaijaPool?</span></h2>
+            
+            <div class="features-grid">
+                <div class="feature-card" style="background: linear-gradient(135deg, #34a853, #0d652d);">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>100% Verified</h3>
+                    <p>All drivers verified with license and vehicle papers. Your safety comes first.</p>
+                </div>
+                
+                <div class="feature-card" style="background: linear-gradient(135deg, #1a73e8, #0d47a1);">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Fixed Fares</h3>
+                    <p>No surprises. Same price every day. Nyanya-CBD: ₦800. Save ₦200 daily.</p>
+                </div>
+                
+                <div class="feature-card" style="background: linear-gradient(135deg, #fbbc05, #e37400);">
+                    <i class="fas fa-users"></i>
+                    <h3>Max 4 Passengers</h3>
+                    <p>No overcrowding. Travel in comfort with leg space guaranteed.</p>
+                </div>
+                
+                <div class="feature-card" style="background: linear-gradient(135deg, #ea4335, #b31412);">
+                    <i class="fas fa-clock"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Help available anytime. Emergency contact sharing with family.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It <span class="highlight">Works</span></h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Download & Register</h3>
+                    <p>Sign up in 2 minutes. Verify your phone number.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3>Find Your Ride</h3>
+                    <p>Enter your route. See available drivers and prices.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-car-side"></i>
+                    </div>
+                    <h3>Travel Safe</h3>
+                    <p>Meet at pickup point. Maximum 4 passengers per car.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Rate & Repeat</h3>
+                    <p>Rate your experience. Build your commute community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Section -->
+    <section class="safety" id="safety">
+        <div class="container">
+            <div class="safety-content">
+                <h2 class="section-title">Your Safety is Our <span class="highlight">Priority</span></h2>
+                <p>We partner with security agencies to ensure your peace of mind.</p>
+                
+                <ul class="safety-list">
+                    <li><i class="fas fa-check-circle"></i> All trips logged with FRSC</li>
+                    <li><i class="fas fa-check-circle"></i> Emergency SOS button in app</li>
+                    <li><i class="fas fa-check-circle"></i> Share trip details with family</li>
+                    <li><i class="fas fa-check-circle"></i> Driver background checks</li>
+                    <li><i class="fas fa-check-circle"></i> 24/7 customer support</li>
                 </ul>
             </div>
-            
-            <div class="buttons">
-                <button onclick="alert('Passenger sign up coming soon!')" class="btn green">I Need a Ride</button>
-                <button onclick="alert('Driver registration coming soon!')" class="btn yellow">I'm a Driver</button>
+            <div class="safety-image">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Safe driving in Nigeria">
             </div>
-        </main>
-        
-        <footer>
-            <p>© 2024 NaijaPool. Making Nigerian roads safer.</p>
-        </footer>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="download">
+        <div class="container">
+            <h2>Ready to Commute Better?</h2>
+            <p>Download the NaijaPool app today and join the revolution.</p>
+            
+            <div class="app-buttons">
+                <button class="btn-app">
+                    <i class="fab fa-google-play"></i>
+                    <div>
+                        <span>GET IT ON</span>
+                        <strong>Google Play</strong>
+                    </div>
+                </button>
+                
+                <button class="btn-app">
+                    <i class="fab fa-app-store"></i>
+                    <div>
+                        <span>Download on the</span>
+                        <strong>App Store</strong>
+                    </div>
+                </button>
+            </div>
+            
+            <p class="cta-note">Available in Lagos, Abuja, Port Harcourt. Coming to more cities soon!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fas fa-car"></i>
+                        <span>Naija<span class="logo-highlight">Pool</span></span>
+                    </div>
+                    <p>Making Nigerian roads safer, one ride at a time.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Cities</h4>
+                    <a href="#">Lagos</a>
+                    <a href="#">Abuja</a>
+                    <a href="#">Port Harcourt</a>
+                    <a href="#">Ibadan</a>
+                    <a href="#">Kano</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press</a>
+                    <a href="#">Blog</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Safety</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Driver Support</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 NaijaPool Commute. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="passengerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Passenger Registration</h3>
+            <p>Coming Soon to App Store and Google Play!</p>
+            <p>Launching first in Lagos and Abuja.</p>
+            <button class="btn btn-primary" onclick="closeModal()">Notify Me</button>
+        </div>
     </div>
-    
+
+    <div id="driverModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Driver Registration</h3>
+            <p>Requirements:</p>
+            <ul>
+                <li>Valid Driver's License</li>
+                <li>Vehicle Papers (Up-to-date)</li>
+                <li>Good Condition Car (2010+)</li>
+                <li>Clean Driving Record</li>
+            </ul>
+            <button class="btn btn-primary" onclick="closeModal()">Apply Now</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

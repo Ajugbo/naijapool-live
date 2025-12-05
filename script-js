@@ -1,19 +1,117 @@
-console.log('NaijaPool Website Ready');
-// Simple website - Build agent will deploy automaticallyname: Deploy Website
+// NaijaPool - Enhanced Interactive Features
+console.log('🚗 NaijaPool Website Loaded');
 
-on:
-  push:
-    branches: [main]
+// Modal Functions
+function showPassengerModal() {
+    document.getElementById('passengerModal').style.display = 'flex';
+}
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest  # This is the BUILD AGENT
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+function showDriverModal() {
+    document.getElementById('driverModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('passengerModal').style.display = 'none';
+    document.getElementById('driverModal').style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const passengerModal = document.getElementById('passengerModal');
+    const driverModal = document.getElementById('driverModal');
+    
+    if (event.target === passengerModal) {
+        passengerModal.style.display = 'none';
+    }
+    if (event.target === driverModal) {
+        driverModal.style.display = 'none';
+    }
+}
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        if(this.getAttribute('href') === '#') return;
+        
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if(targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// App Store buttons interaction
+document.querySelectorAll('.btn-app').forEach(button => {
+    button.addEventListener('click', function() {
+        alert('📱 App coming soon! Launching on iOS and Android in Q1 2024.\n\nSign up for early access: hello@naijapool.com');
+    });
+});
+
+// Stats animation
+function animateStats() {
+    const stats = document.querySelectorAll('.stat h3');
+    stats.forEach(stat => {
+        const target = parseInt(stat.textContent);
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+            current += increment;
+            if(current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            stat.textContent = Math.floor(current) + (stat.textContent.includes('₦') ? '+' : '+');
+        }, 30);
+    });
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ NaijaPool Website Initialized');
+    
+    // Add current year to footer if needed
+    const yearElements = document.querySelectorAll('[data-year]');
+    yearElements.forEach(el => {
+        el.textContent = new Date().getFullYear();
+    });
+    
+    // Animate stats when they come into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                animateStats();
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+    
+    const heroStats = document.querySelector('.hero-stats');
+    if(heroStats) observer.observe(heroStats);
+    
+    // Add scroll effect to navbar
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if(window.scrollY > 100) {
+            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+        } else {
+            navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+        }
+    });
+});
+
+// Feature cards hover effect
+document.querySelectorAll('.feature-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px) scale(1.02)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+    });
+});
