@@ -2,8 +2,8 @@
 console.log('🚗 NaijaPool Website Loaded - Registration Enabled');
 
 // Form IDs from Formspree (You'll replace these)
-const FORMSPREE_PASSENGER_ID = 'https://formspree.io/f/xgvgzrzn';
-const FORMSPREE_DRIVER_ID = 'https://formspree.io/f/xvgeqdql';
+const FORMSPREE_PASSENGER_ID = 'xgvgzrzn';
+const FORMSPREE_DRIVER_ID = 'xvgeqdql';
 
 // Initialize forms with Formspree IDs
 document.addEventListener('DOMContentLoaded', function() {
