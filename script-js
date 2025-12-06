@@ -1,5 +1,32 @@
-// NaijaPool - Enhanced Interactive Features
-console.log('🚗 NaijaPool Website Loaded');
+// NaijaPool - Complete Website with Registration
+console.log('🚗 NaijaPool Website Loaded - Registration Enabled');
+
+// Form IDs from Formspree (You'll replace these)
+const FORMSPREE_PASSENGER_ID = 'https://formspree.io/f/xgvgzrzn';
+const FORMSPREE_DRIVER_ID = 'https://formspree.io/f/xvgeqdql';
+
+// Initialize forms with Formspree IDs
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ Initializing registration forms');
+    
+    // Set Formspree endpoints
+    const passengerForm = document.getElementById('passengerForm');
+    const driverForm = document.getElementById('driverForm');
+    
+    if (passengerForm) {
+        passengerForm.action = `https://formspree.io/f/${FORMSPREE_PASSENGER_ID}`;
+    }
+    
+    if (driverForm) {
+        driverForm.action = `https://formspree.io/f/${FORMSPREE_DRIVER_ID}`;
+    }
+    
+    // Initialize other features
+    initializeSmoothScroll();
+    initializeAppButtons();
+    initializeFormValidation();
+    initializeNavbarEffects();
+});
 
 // Modal Functions
 function showPassengerModal() {
@@ -10,100 +37,168 @@ function showDriverModal() {
     document.getElementById('driverModal').style.display = 'flex';
 }
 
+function showSuccessModal() {
+    document.getElementById('successModal').style.display = 'flex';
+}
+
 function closeModal() {
-    document.getElementById('passengerModal').style.display = 'none';
-    document.getElementById('driverModal').style.display = 'none';
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.style.display = 'none';
+    });
+}
+
+// Form Submission Handling
+function initializeFormValidation() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            if (!this.checkValidity()) {
+                this.reportValidity();
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call (in production, this goes to Formspree)
+            setTimeout(() => {
+                // Close current modal
+                closeModal();
+                
+                // Show success message
+                showSuccessModal();
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                console.log('Form submitted successfully');
+            }, 1500);
+            
+            // In production, remove setTimeout and use actual fetch:
+            /*
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    closeModal();
+                    showSuccessModal();
+                    this.reset();
+                }
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                alert('Registration failed. Please try again.');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+            */
+        });
+    });
+}
+
+// Smooth scrolling for navigation links
+function initializeSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            if(this.getAttribute('href') === '#') return;
+            
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if(targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// App Store buttons interaction
+function initializeAppButtons() {
+    document.querySelectorAll('.btn-app').forEach(button => {
+        button.addEventListener('click', function() {
+            alert('📱 NaijaPool App Coming Soon!\n\nLaunching on iOS and Android in Q1 2024.\n\nRegister now to get early access!');
+        });
+    });
+}
+
+// Navbar scroll effects
+function initializeNavbarEffects() {
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if(window.scrollY > 100) {
+            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.backdropFilter = 'blur(10px)';
+        } else {
+            navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            navbar.style.background = 'var(--white)';
+            navbar.style.backdropFilter = 'none';
+        }
+    });
 }
 
 // Close modal when clicking outside
 window.onclick = function(event) {
-    const passengerModal = document.getElementById('passengerModal');
-    const driverModal = document.getElementById('driverModal');
-    
-    if (event.target === passengerModal) {
-        passengerModal.style.display = 'none';
-    }
-    if (event.target === driverModal) {
-        driverModal.style.display = 'none';
+    if (event.target.classList.contains('modal')) {
+        closeModal();
     }
 }
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        if(this.getAttribute('href') === '#') return;
-        
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if(targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// App Store buttons interaction
-document.querySelectorAll('.btn-app').forEach(button => {
-    button.addEventListener('click', function() {
-        alert('📱 App coming soon! Launching on iOS and Android in Q1 2024.\n\nSign up for early access: hello@naijapool.com');
-    });
-});
 
 // Stats animation
 function animateStats() {
     const stats = document.querySelectorAll('.stat h3');
     stats.forEach(stat => {
-        const target = parseInt(stat.textContent);
+        const text = stat.textContent;
+        const isMoney = text.includes('₦');
+        const target = parseInt(text.replace(/[^0-9]/g, ''));
+        
         let current = 0;
-        const increment = target / 50;
+        const increment = target / 30;
         const timer = setInterval(() => {
             current += increment;
             if(current >= target) {
                 current = target;
                 clearInterval(timer);
             }
-            stat.textContent = Math.floor(current) + (stat.textContent.includes('₦') ? '+' : '+');
-        }, 30);
+            stat.textContent = (isMoney ? '₦' : '') + Math.floor(current) + '+';
+        }, 40);
     });
 }
 
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ NaijaPool Website Initialized');
-    
-    // Add current year to footer if needed
-    const yearElements = document.querySelectorAll('[data-year]');
-    yearElements.forEach(el => {
-        el.textContent = new Date().getFullYear();
-    });
-    
-    // Animate stats when they come into view
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                animateStats();
-                observer.unobserve(entry.target);
-            }
-        });
-    });
-    
-    const heroStats = document.querySelector('.hero-stats');
-    if(heroStats) observer.observe(heroStats);
-    
-    // Add scroll effect to navbar
-    window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
-        if(window.scrollY > 100) {
-            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-        } else {
-            navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+// Initialize stats animation when in view
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            animateStats();
+            observer.unobserve(entry.target);
         }
     });
-});
+}, { threshold: 0.5 });
+
+// Start observing hero stats
+const heroStats = document.querySelector('.hero-stats');
+if(heroStats) observer.observe(heroStats);
 
 // Feature cards hover effect
 document.querySelectorAll('.feature-card').forEach(card => {
@@ -115,3 +210,14 @@ document.querySelectorAll('.feature-card').forEach(card => {
         this.style.transform = 'translateY(0) scale(1)';
     });
 });
+
+// Auto-fill email in driver form if available
+const driverEmailField = document.querySelector('input[name="_replyto"]');
+if (driverEmailField) {
+    const driverEmailInput = document.getElementById('driverEmail');
+    if (driverEmailInput) {
+        driverEmailInput.addEventListener('input', function() {
+            driverEmailField.value = this.value;
+        });
+    }
+}

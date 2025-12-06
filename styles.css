@@ -569,3 +569,124 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.form-group label i {
+    color: var(--primary-blue);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+}
+
+.agreement {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+    background: #f0f7ff;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-blue);
+}
+
+.agreement input[type="checkbox"] {
+    margin-top: 3px;
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+}
+
+.form-note {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.modal-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+/* Success Modal */
+.success-content {
+    text-align: center;
+    padding: 50px 40px;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+}
+
+.success-content h3 {
+    margin-bottom: 15px;
+    color: var(--primary-green);
+}
+
+/* Form Validation */
+.form-group input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--primary-red);
+}
+
+.form-group input:valid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--primary-green);
+}

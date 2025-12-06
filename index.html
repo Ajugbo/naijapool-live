@@ -197,37 +197,154 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="logo">
-                        <i class="fas fa-car"></i>
-                        <span>Naija<span class="logo-highlight">Pool</span></span>
-                    </div>
-                    <p>Making Nigerian roads safer, one ride at a time.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <!-- Registration Modals -->
+    <div id="passengerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3><i class="fas fa-user"></i> Passenger Registration</h3>
+            <p class="modal-subtitle">Join thousands of safe commuters</p>
+            
+            <form id="passengerForm" action="https://formspree.io/f/{YOUR_FORM_ID}" method="POST">
+                <div class="form-group">
+                    <label for="passengerName"><i class="fas fa-user-circle"></i> Full Name</label>
+                    <input type="text" id="passengerName" name="name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="passengerPhone"><i class="fas fa-phone"></i> Phone Number</label>
+                    <input type="tel" id="passengerPhone" name="phone" placeholder="08012345678" pattern="[0-9]{11}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="passengerEmail"><i class="fas fa-envelope"></i> Email (Optional)</label>
+                    <input type="email" id="passengerEmail" name="email" placeholder="you@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="passengerRoute"><i class="fas fa-route"></i> Your Common Route</label>
+                    <select id="passengerRoute" name="route" required>
+                        <option value="">Select your route</option>
+                        <option value="nyanya-cbd">Nyanya ↔ CBD</option>
+                        <option value="kubwa-cbd">Kubwa ↔ CBD</option>
+                        <option value="mararaba-cbd">Mararaba ↔ CBD</option>
+                        <option value="gwarimpa-cbd">Gwarimpa ↔ CBD</option>
+                        <option value="other">Other Abuja Route</option>
+                        <option value="lagos">Lagos Route</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-clock"></i> Preferred Commute Times</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="morning" value="yes"> Morning (6-9 AM)</label>
+                        <label><input type="checkbox" name="evening" value="yes"> Evening (4-7 PM)</label>
+                        <label><input type="checkbox" name="weekend" value="yes"> Weekend Trips</label>
                     </div>
                 </div>
                 
-                <div class="footer-col">
-                    <h4>Cities</h4>
-                    <a href="#">Lagos</a>
-                    <a href="#">Abuja</a>
-                    <a href="#">Port Harcourt</a>
-                    <a href="#">Ibadan</a>
-                    <a href="#">Kano</a>
+                <div class="form-group">
+                    <label><i class="fas fa-shield-alt"></i> Safety Agreement</label>
+                    <div class="agreement">
+                        <input type="checkbox" id="passengerAgree" required>
+                        <label for="passengerAgree">I agree to follow safety guidelines and verify my identity</label>
+                    </div>
                 </div>
                 
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <a href="#">About Us</a>
-                    <a href="#">Careers</a>
-                    <a href="#">Press</a>
-                    <a href="#">Blog</a>
+                <input type="hidden" name="user_type" value="passenger">
+                <input type="hidden" name="_subject" value="New Passenger Registration - NaijaPool">
+                
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-paper-plane"></i> Register as Passenger
+                </button>
+                
+                <p class="form-note">₦100 platform fee per ride. Fares: Nyanya-CBD ₦800</p>
+            </form>
+        </div>
+    </div>
+
+    <div id="driverModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3><i class="fas fa-steering-wheel"></i> Driver Registration</h3>
+            <p class="modal-subtitle">Earn ₦3,000+ per trip. Verified platform.</p>
+            
+            <form id="driverForm" action="https://formspree.io/f/{YOUR_FORM_ID}" method="POST">
+                <div class="form-group">
+                    <label for="driverName"><i class="fas fa-user-circle"></i> Full Name</label>
+                    <input type="text" id="driverName" name="name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="driverPhone"><i class="fas fa-phone"></i> Phone Number</label>
+                    <input type="tel" id="driverPhone" name="phone" placeholder="08012345678" pattern="[0-9]{11}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="driverLicense"><i class="fas fa-id-card"></i> Driver's License Number</label>
+                    <input type="text" id="driverLicense" name="license" placeholder="DL-12345678" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="carModel"><i class="fas fa-car"></i> Car Model & Year</label>
+                    <input type="text" id="carModel" name="car_model" placeholder="e.g., Toyota Camry 2018" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="plateNumber"><i class="fas fa-hashtag"></i> Plate Number</label>
+                    <input type="text" id="plateNumber" name="plate" placeholder="ABC123XYZ" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="driverRoute"><i class="fas fa-route"></i> Your Regular Route</label>
+                    <select id="driverRoute" name="route" required>
+                        <option value="">Select your route</option>
+                        <option value="nyanya-cbd">Nyanya ↔ CBD</option>
+                        <option value="kubwa-cbd">Kubwa ↔ CBD</option>
+                        <option value="mararaba-cbd">Mararaba ↔ CBD</option>
+                        <option value="gwarimpa-cbd">Gwarimpa ↔ CBD</option>
+                        <option value="lagos-mainland">Lagos Mainland ↔ Island</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-clock"></i> Availability</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="morning" value="yes" checked> Morning Trips</label>
+                        <label><input type="checkbox" name="evening" value="yes" checked> Evening Trips</label>
+                        <label><input type="checkbox" name="weekend" value="yes"> Weekend Trips</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-file-contract"></i> Driver Agreement</label>
+                    <div class="agreement">
+                        <input type="checkbox" id="driverAgree" required>
+                        <label for="driverAgree">I agree to maximum 4 passengers, fixed fares, and safety rules</label>
+                    </div>
+                </div>
+                
+                <input type="hidden" name="user_type" value="driver">
+                <input type="hidden" name="_subject" value="New Driver Registration - NaijaPool">
+                <input type="hidden" name="_replyto" value="driver_email">
+                
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-check-circle"></i> Register as Driver
+                </button>
+                
+                <p class="form-note">₦200 platform fee per trip. Earn ₦3,200 per full car (₦3,000 net)</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message (Hidden by default) -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h3>Registration Successful!</h3>
+            <p>Thank you for joining NaijaPool. We'll contact you within 24 hours to complete verification.</p>
+            <button class="btn btn-primary" onclick="closeModal()">Continue</button>
+        </div>
+    </div>
                 </div>
                 
                 <div class="footer-col">
