@@ -204,7 +204,7 @@
             <h3><i class="fas fa-user"></i> Passenger Registration</h3>
             <p class="modal-subtitle">Join thousands of safe commuters</p>
             
-            <form id="passengerForm" action="https://formspree.io/f/{YOUR_FORM_ID}" method="POST">
+            <form id="passengerForm" action="https://formspree.io/f/xgvgzrzn" method="POST">
                 <div class="form-group">
                     <label for="passengerName"><i class="fas fa-user-circle"></i> Full Name</label>
                     <input type="text" id="passengerName" name="name" placeholder="Enter your full name" required>
@@ -268,7 +268,7 @@
             <h3><i class="fas fa-steering-wheel"></i> Driver Registration</h3>
             <p class="modal-subtitle">Earn ₦3,000+ per trip. Verified platform.</p>
             
-            <form id="driverForm" action="https://formspree.io/f/{YOUR_FORM_ID}" method="POST">
+            <form id="driverForm" action="https://formspree.io/f/xvgeqdql" method="POST">
                 <div class="form-group">
                     <label for="driverName"><i class="fas fa-user-circle"></i> Full Name</label>
                     <input type="text" id="driverName" name="name" placeholder="Enter your full name" required>
@@ -325,7 +325,6 @@
                 
                 <input type="hidden" name="user_type" value="driver">
                 <input type="hidden" name="_subject" value="New Driver Registration - NaijaPool">
-                <input type="hidden" name="_replyto" value="driver_email">
                 
                 <button type="submit" class="btn btn-primary btn-block">
                     <i class="fas fa-check-circle"></i> Register as Driver
@@ -336,7 +335,7 @@
         </div>
     </div>
 
-    <!-- Success Message (Hidden by default) -->
+    <!-- Success Message -->
     <div id="successModal" class="modal">
         <div class="modal-content success-content">
             <i class="fas fa-check-circle success-icon"></i>
@@ -345,54 +344,3 @@
             <button class="btn btn-primary" onclick="closeModal()">Continue</button>
         </div>
     </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Support</h4>
-                    <a href="#">Help Center</a>
-                    <a href="#">Safety</a>
-                    <a href="#">Contact</a>
-                    <a href="#">Driver Support</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 NaijaPool Commute. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modals -->
-    <div id="passengerModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3>Passenger Registration</h3>
-            <p>Coming Soon to App Store and Google Play!</p>
-            <p>Launching first in Lagos and Abuja.</p>
-            <button class="btn btn-primary" onclick="closeModal()">Notify Me</button>
-        </div>
-    </div>
-
-    <div id="driverModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3>Driver Registration</h3>
-            <p>Requirements:</p>
-            <ul>
-                <li>Valid Driver's License</li>
-                <li>Vehicle Papers (Up-to-date)</li>
-                <li>Good Condition Car (2010+)</li>
-                <li>Clean Driving Record</li>
-            </ul>
-            <button class="btn btn-primary" onclick="closeModal()">Apply Now</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
